@@ -66,7 +66,7 @@ const UserDetailScreen = (props) => {
       .doc(usr)
       .delete()
       .then(() => {
-        props.navigation.navigate('UsersList');
+        props.navigation.navigate('userList');
         });
         //setUsers(users);
       } catch (e) {

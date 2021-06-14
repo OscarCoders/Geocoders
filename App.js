@@ -11,6 +11,7 @@ import GeoLocationScreen from './views/GeoLocationScreen'
 import UserList from './views/UserList';
 import CreateUserScreen from './views/CreateUserScreen';
 import UserDetailScreen from './views/UserDetailScreen';
+import MenuScreen from './views/MenuScreen';
 
 function MyStack() {
   return(

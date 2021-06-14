@@ -11,15 +11,15 @@ import {
 import { useState } from "react";
 import  firebase from '../Database/firebase'
 
-const Menu=(props)=>{
+const MenuScreen=(props)=>{
 
     return(
         <View>
-        <Button title="Consulta de usuarios" onPress= {()=> props.navigation.navigate("UserList") } />
+        <Button title="Consulta de usuarios" onPress= {()=> props.navigation.navigate("userList") } />
         <Button title="Consulta de cliente(GPS)" onPress= {()=> props.navigation.navigate("GpsLista") } />
         <Button title="Salir" onPress= {()=> props.navigation.navigate("MenuScreen") } />
         </View>
     );
 };
 
-export default Menu;
+export default MenuScreen;
