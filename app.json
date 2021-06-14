@@ -1,0 +1,12 @@
+{
+  "name": "geocoders",
+  "displayName": "geocoders",
+  "expo": {
+    "name": "geocoders",
+    "slug": "geocoders",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
