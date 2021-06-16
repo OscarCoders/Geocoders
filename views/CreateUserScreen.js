@@ -20,6 +20,8 @@ const CreateUserScreen = (props) => {
     name: "",
     mail: "",
     phone: "",
+    latitud: 0,
+    longitud: 0,
   });
 
   const handleChangeText = (name, value) => {
@@ -34,6 +36,8 @@ const CreateUserScreen = (props) => {
             name: state.name,
             mail: state.mail,
             phone: state.phone,
+            latitud: state.latitud,
+            longitud: state.longitud,
         
         })
         alert('Guardado exitosamente')

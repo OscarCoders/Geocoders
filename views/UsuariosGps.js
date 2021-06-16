@@ -1,5 +1,5 @@
 import React, {useEffect,useState} from 'react'
-import {View, Text, ScrollView,Button} from 'react-native'
+import {View, Text, ScrollView,Button, StyleSheet} from 'react-native'
 import  firebase from '../Database/firebase'
 //import {ListItem, Avatar} from 'react-native-gesture-handler'
 import {ListItem, Avatar} from 'react-native-elements'
@@ -14,7 +14,7 @@ const UsuariosGps =  (props) =>{
       const users = [];
 
       await firebase.conexion
-      .collection('user') 
+      .collection('usersAdmin') 
       .get()
       .then((querySnapshot) => {
       
@@ -24,13 +24,17 @@ const UsuariosGps =  (props) =>{
             const {
               latitud,
               longitud,
+              mail,
               name,
+              phone,
             } = doc.data();
             users.push({
               id: doc.id,
               latitud,
               longitud,
+              mail,
               name,
+              phone,
             });
           });
         });
@@ -54,7 +58,7 @@ const UsuariosGps =  (props) =>{
                   <ListItem  key={user.id} 
                   bottomDivider 
                   //onPress= {()=> alert("Su Id es: "+user.id)}
-                  onPress= {()=> props.navigation.navigate('GpsMap', {
+                  onPress= {()=> props.navigation.navigate('MapViewScreen', {
                     userId: user.id,
                     userLatitud: user.latitud,
                     userLongitud: user.longitud
@@ -68,7 +72,10 @@ const UsuariosGps =  (props) =>{
                       />
                     <ListItem.Content>
                         <Text>{user.name}</Text>
-                         <Text>{user.mail}</Text>
+                         <View style={styles.container}>
+                            <Text>Latitud: {user.latitud}</Text>
+                            <Text>Longitud: {user.longitud}</Text>
+                         </View>
                     </ListItem.Content>
                  </ListItem>
                  
@@ -79,5 +86,14 @@ const UsuariosGps =  (props) =>{
 
     ); 
 }
+
+const styles =StyleSheet.create({
+  container:{
+      flex: 1,
+      
+      
+  },
+  
+})
 
 export default UsuariosGps
