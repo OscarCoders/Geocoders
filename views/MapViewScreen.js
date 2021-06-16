@@ -9,8 +9,8 @@ import MapView, { Marker } from "react-native-maps";
 const MapViewScreen = (props) =>{ 
 
     const [region, setRegion] = useState({
-        latitud: "",
-        longitud: "",
+        latitude: props.route.params.userLatitud,
+        longitude: props.route.params.userLongitud,
         latitudeDelta: 0.01,
         longitudeDelta: 0.01
       });
@@ -24,7 +24,7 @@ const MapViewScreen = (props) =>{
         region={region}
         onRegionChangeComplete={region => setRegion(region)}
       >
-        <Marker coordinate={{ latitude: props.navigation.navigate.userLatitud, longitude: props.navigation.navigate.userLongitud }} />
+        <Marker coordinate={{ latitude: props.route.params.userLatitud, longitude: props.route.params.userLongitud }} />
       </MapView>
     );
   };
