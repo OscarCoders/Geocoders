@@ -21,9 +21,10 @@ function MyStack() {
         <Stack.Screen name="GpsLista" component={UsuariosGps} options={{title: 'Lista d eusuarios Gps'}} />
         {/* <Stack.Screen name="GeoLocationScreen" component={GeoLocationScreen} options={{title: 'Geolocalización de usuario'}} /> */}
         <Stack.Screen name="MapViewScreen" component={MapViewScreen} options={{title: 'Geolocalización y Mapeo'}} />
-        <Stack.Screen name="userList" component={UserList} options={{title:'Lista de usuarios'}} />
+        
         <Stack.Screen name="createUserScreen" component={CreateUserScreen} options={{title:'Crear usuario'}}/>
         <Stack.Screen name="UserDetailScreen" component={UserDetailScreen} options={{title:'Detalle de usuario'}}/>
+        <Stack.Screen name="userList" component={UserList} options={{title:'Lista de usuarios'}} />
        
     </Stack.Navigator>
   )

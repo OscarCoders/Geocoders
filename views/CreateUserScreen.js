@@ -7,6 +7,7 @@ import {
   Button,
   ScrollView,
   TextInput,
+  Alert
 } from "react-native";
 import { useState } from "react";
 import  firebase from '../Database/firebase'
@@ -40,8 +41,13 @@ const CreateUserScreen = (props) => {
             longitud: state.longitud,
         
         })
-        alert('Guardado exitosamente')
-        props.navigation.navigate('userList');
+        Alert.alert("Alert Title",
+        "Guardado",
+        [
+          { text: "OK", onPress:()=> props.navigation.navigate("MenuScreen") }
+        ]);
+        //alert('Guardado exitosamente')
+        //props.navigation.navigate('userList');
     }
 
   }

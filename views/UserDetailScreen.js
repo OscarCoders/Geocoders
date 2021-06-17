@@ -56,7 +56,7 @@ const UserDetailScreen = (props) => {
       } catch (e) {
         alert(e);
       }
-      props.navigation.navigate('userList');
+      props.navigation.navigate('MenuScreen');
   };
   const deleteUser = async (usr) => {
     try {
@@ -66,7 +66,7 @@ const UserDetailScreen = (props) => {
       .doc(usr)
       .delete()
       .then(() => {
-        props.navigation.navigate('userList');
+        props.navigation.navigate('MenuScreen');
         });
         //setUsers(users);
       } catch (e) {

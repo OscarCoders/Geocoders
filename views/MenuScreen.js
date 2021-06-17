@@ -6,7 +6,7 @@ import {
   View,
   Button,
   ScrollView,
-  TextInput,
+  TextInput,BackHandler
 } from "react-native";
 import { useState } from "react";
 import  firebase from '../Database/firebase'
@@ -17,7 +17,7 @@ const MenuScreen=(props)=>{
         <View>
         <Button title="Consulta de usuarios" onPress= {()=> props.navigation.navigate("userList") } />
         <Button title="Consulta de cliente(GPS)" onPress= {()=> props.navigation.navigate("GpsLista") } />
-        <Button title="Salir" onPress= {()=> props.navigation.navigate("MenuScreen") } />
+        <Button title="Salir" onPress ={()=>{console.log('clicked'); return BackHandler.exitApp();}}/>
         </View>
     );
 };
