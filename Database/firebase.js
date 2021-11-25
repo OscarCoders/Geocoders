@@ -1,6 +1,6 @@
 import * as firebase from 'firebase';
 import firestore from 'firebase/firestore'
-
+import "firebase/auth"
 const settings = {timestampsInSnapshots: true};
 
 const config = {
@@ -11,7 +11,9 @@ const config = {
   storageBucket: "geocoders-5c90c.appspot.com",
   //messagingSenderId: "927027289317"
 };
-firebase.initializeApp(config);
+if (!firebase.apps.length) {
+  firebase.initializeApp(config)
+}
 
 firebase.firestore().settings(settings);
 
@@ -20,3 +22,5 @@ export default {
     firebase,
     conexion,
 }
+export const auth = firebase.auth() 
+export const googleAuthProvider = new firebase.auth.GoogleAuthProvider()

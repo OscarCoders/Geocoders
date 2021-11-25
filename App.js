@@ -13,10 +13,12 @@ import CreateUserScreen from './views/CreateUserScreen';
 import UserDetailScreen from './views/UserDetailScreen';
 import MenuScreen from './views/MenuScreen';
 import UsuariosGps from './views/UsuariosGps';
+import LoginScreen from './views/LoginScreen';
 
 function MyStack() {
   return(
     <Stack.Navigator>
+        <Stack.Screen name="LoginScreen" component={LoginScreen} options={{title: 'Login'}} />
         <Stack.Screen name="MenuScreen" component={MenuScreen} options={{title: 'Menu'}} />
         <Stack.Screen name="GpsLista" component={UsuariosGps} options={{title: 'Lista d eusuarios Gps'}} />
         {/* <Stack.Screen name="GeoLocationScreen" component={GeoLocationScreen} options={{title: 'Geolocalización de usuario'}} /> */}
