@@ -8,10 +8,17 @@ import {
   Image,
   KeyboardAvoidingView,
 } from "react-native";
-import firebase from "../Database/firebase";
+//import firebase from "../Database/firebase";
+import * as Firebase from 'firebase';
 import * as ImagePicker from "expo-image-picker";
 
+import {config} from "../Database/firebase";
+
 const UploadImage = () => {
+  if(!Firebase.apps.length){
+     Firebase.initializeApp(config)
+  }
+
   const [image, setImage] = useState("");
   const [uploading, setUploading] = useState(false)
 
@@ -57,9 +64,9 @@ const UploadImage = () => {
 
       });
 
-      const ref = firebase.storage().ref().child(new Date().toISOString());
-      const snapshot = await ref.put(blob)
-      snapshot.on(firebase.storage.TaskEvent.STATE_CHANGED,()=>{
+      const ref = Firebase.storage().ref().child(new Date().toISOString());
+      const snapshot = ref.put(blob)
+      snapshot.on(Firebase.storage.TaskEvent.STATE_CHANGED,()=>{
         setUploading(true)
       }, (error) =>{
           setUploading(false)

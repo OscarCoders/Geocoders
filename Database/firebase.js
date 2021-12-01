@@ -17,10 +17,12 @@ if (!firebase.apps.length) {
 
 firebase.firestore().settings(settings);
 
+
 const conexion = firebase.firestore()
 export default {
     firebase,
     conexion,
+    config
 }
 export const auth = firebase.auth() 
 export const googleAuthProvider = new firebase.auth.GoogleAuthProvider()
