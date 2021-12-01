@@ -8,7 +8,9 @@
   },
   "dependencies": {
     "@react-native-community/masked-view": "0.1.10",
+    "@react-native-firebase/app": "^13.0.1",
     "@react-native-firebase/firestore": "^12.9.2",
+    "@react-native-firebase/messaging": "^13.0.1",
     "@react-native-google-signin/google-signin": "^7.0.1",
     "@react-navigation/native": "^5.9.8",
     "@react-navigation/stack": "^5.14.9",

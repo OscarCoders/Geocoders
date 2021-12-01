@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { StatusBar } from 'expo-status-bar'
 import { Text, View, StyleSheet } from 'react-native'
 import {NavigationContainer,StackActions} from '@react-navigation/native'//npm install @react-navigation/native
@@ -15,7 +15,16 @@ import MenuScreen from './views/MenuScreen';
 import UsuariosGps from './views/UsuariosGps';
 import LoginScreen from './views/LoginScreen';
 
+import messaging from '@react-native-firebase/messaging';
+
 function MyStack() {
+  useEffect(() => {
+    const unsubscribe = messaging().onMessage(async remoteMessage => {
+      console.log('Mensaje recibido', remoteMessage);
+    });
+
+    return unsubscribe;
+  }, []);
   return(
     <Stack.Navigator>
         <Stack.Screen name="LoginScreen" component={LoginScreen} options={{title: 'Login'}} />
