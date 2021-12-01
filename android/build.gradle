@@ -6,6 +6,7 @@ buildscript {
         minSdkVersion = 21
         compileSdkVersion = 30
         targetSdkVersion = 30
+        googlePlayServicesAuthVersion = "18.0.0" // <--- use this version or newer
     }
     repositories {
         google()

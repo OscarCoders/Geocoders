@@ -15,16 +15,16 @@ import MenuScreen from './views/MenuScreen';
 import UsuariosGps from './views/UsuariosGps';
 import LoginScreen from './views/LoginScreen';
 
-import messaging from '@react-native-firebase/messaging';
+//import messaging from '@react-native-firebase/messaging';
 
 function MyStack() {
-  useEffect(() => {
+  /*useEffect(() => {
     const unsubscribe = messaging().onMessage(async remoteMessage => {
       console.log('Mensaje recibido', remoteMessage);
     });
 
     return unsubscribe;
-  }, []);
+  }, []);*/
   return(
     <Stack.Navigator>
         <Stack.Screen name="LoginScreen" component={LoginScreen} options={{title: 'Login'}} />

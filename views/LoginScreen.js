@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { auth } from '../Database/firebase'
 
+import * as Google from 'expo-google-app-auth'
 
 import firebase from '../Database/firebase'
 
@@ -10,6 +11,8 @@ import firebase from '../Database/firebase'
 const LoginScreen = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
+    const [googleSubmitting, setGoogleSubmitting] = useState(false)
 
     const navigation = useNavigation()
 
@@ -45,6 +48,32 @@ const LoginScreen = () => {
     const handleAlert = () => {
         alert('state: ' + email)
     }
+
+    const handleGoogleSingIn = () =>{
+        setGoogleSubmitting(true)
+        const config = {
+            iosClientId: `626556513871-5b1geq4mcb3m9n9a828nlb20ju23hhku.apps.googleusercontent.com`,
+            androidClientId: `626556513871-7gfacgkjt2r9eigi7m308b9cem3c07t2.apps.googleusercontent.com`,
+            scopes: ['profile', 'email']
+        }
+
+        Google.logInAsync(config).then((result)=>{
+            const{type, user} = result;
+
+            if(type == 'success'){
+                const {email, name, photoUrl} = user
+                console.log("se compoleto el inicio de sesion")
+                setTimeout(() => navigation.navigate('MenuScreen', {email, name, photoUrl}), 1000)
+            }else{
+                console.log("no logueado")
+            }
+            setGoogleSubmitting(false)
+        }).catch(error =>{
+            console.log(error)
+            setGoogleSubmitting(false)
+        })
+    }
+
     return (
         <KeyboardAvoidingView
             style={styles.container}
@@ -80,10 +109,10 @@ const LoginScreen = () => {
                     <Text style={styles.buttonOutlineText}>Register</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    onPress={handleAlert}
+                    onPress={handleGoogleSingIn}
                     style={[styles.button, styles.buttonOutline]}
                 >
-                    <Text style={styles.buttonOutlineText}>ver estado</Text>
+                    <Text style={styles.buttonOutlineText}>iniciar sesion con google</Text>
                 </TouchableOpacity>
             </View>
         </KeyboardAvoidingView>
