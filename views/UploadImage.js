@@ -58,21 +58,21 @@ const UploadImage = () => {
       });
 
       const ref = firebase.storage().ref().child(new Date().toISOString());
-      const snapshot = ref.put(blob)
-      snapshot.on(firebase.storage.taskEvent.STATE_CHANGED,()=>{
+      const snapshot = await ref.put(blob)
+      snapshot.on(firebase.storage.TaskEvent.STATE_CHANGED,()=>{
         setUploading(true)
       }, (error) =>{
           setUploading(false)
           console.log(error)
           blob.close()
-          return
+          return;
       }, () =>{
           snapshot.snapshot.ref.getDownloadURL().then((url)=>{
             setUploading(false)
             console.log('download url: ', url)
             blob.close()
             return url;
-          })
+          });
       })
   }
 
@@ -93,7 +93,7 @@ const UploadImage = () => {
             style={[styles.button, styles.buttonOutline]}
             disabled={uploading ? true : false}
           >
-            <Text style={styles.buttonOutlineText}>Subir imagen</Text>
+            <Text style={styles.buttonOutlineText}>{uploading ? 'cargando...' : 'subir imagen'}</Text>
           </TouchableOpacity>
         </View>
       </View>
