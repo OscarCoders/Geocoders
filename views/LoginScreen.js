@@ -25,7 +25,9 @@ const LoginScreen = () => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
-        navigation.replace("MenuScreen");
+        let loginGoogle = false
+        let email = user.email
+        navigation.replace("MenuScreen", {loginGoogle, email });
       }
     });
 
@@ -70,8 +72,9 @@ const LoginScreen = () => {
         if (type == "success") {
           const { email, name, photoUrl } = user;
           console.log("se compoleto el inicio de sesion");
+          let loginGoogle = true
           setTimeout(
-            () => navigation.navigate("MenuScreen", { email, name, photoUrl }),
+            () => navigation.navigate("MenuScreen", { email, name, photoUrl, loginGoogle }),
             1000
           );
         } else {

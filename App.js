@@ -14,6 +14,7 @@ import UserDetailScreen from './views/UserDetailScreen';
 import MenuScreen from './views/MenuScreen';
 import UsuariosGps from './views/UsuariosGps';
 import LoginScreen from './views/LoginScreen';
+import UploadImage from './views/UploadImage';
 
 //import messaging from '@react-native-firebase/messaging';
 
@@ -29,6 +30,7 @@ function MyStack() {
     <Stack.Navigator>
         <Stack.Screen name="LoginScreen" component={LoginScreen} options={{title: 'Login'}} />
         <Stack.Screen name="MenuScreen" component={MenuScreen} options={{title: 'Menu'}} />
+        <Stack.Screen name="UploadImage" component={UploadImage} options={{title: 'Subir imagen'}} />
         <Stack.Screen name="GpsLista" component={UsuariosGps} options={{title: 'Lista d eusuarios Gps'}} />
         {/* <Stack.Screen name="GeoLocationScreen" component={GeoLocationScreen} options={{title: 'Geolocalización de usuario'}} /> */}
         <Stack.Screen name="MapViewScreen" component={MapViewScreen} options={{title: 'Geolocalización y Mapeo'}} />
